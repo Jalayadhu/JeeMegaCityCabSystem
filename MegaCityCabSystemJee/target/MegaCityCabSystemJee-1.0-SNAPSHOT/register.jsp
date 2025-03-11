@@ -4,7 +4,7 @@
     <title>Register - MegaCityCab</title>
 </head>
 <body>
-    <h2>User Registration</h2>
+    <h2>Car Registration</h2>
     
     <!-- Display messages from the servlet (if any) -->
     <% 
@@ -14,7 +14,7 @@
         <p style="color: red;"><%= message %></p>
     <% } %>
 
-    <form action="/MegaCityCabSystemJee/RegisterServlet" method="post">
+    <form action="/MegaCityCabSystemJee/RegisterCarServlet" method="post">
 
         Username: <input type="text" name="UserNameJ" required><br>
         Password: <input type="password" name="PasswordJ" required><br>
