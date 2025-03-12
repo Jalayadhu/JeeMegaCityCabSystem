@@ -1,0 +1,6 @@
+com\megacitycab\dao\DBConnection.class
+com\megacitycab\servlets\LoginServlet.class
+com\mycompany\megacitycabsystemjee\JakartaRestConfiguration.class
+com\megacitycab\servlets\RegisterCarServlet.class
+com\mycompany\megacitycabsystemjee\resources\JakartaEE10Resource.class
+com\megacitycab\servlets\RegisterServlet.class
