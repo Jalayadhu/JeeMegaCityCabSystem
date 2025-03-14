@@ -1,6 +1,15 @@
 com\megacitycab\dao\DBConnection.class
+
+com\megacitycab\servlets\UpdateDriverServlet.class
+com\megacitycab\servlets\DeleteCarServlet.class
 com\megacitycab\servlets\LoginServlet.class
-com\mycompany\megacitycabsystemjee\JakartaRestConfiguration.class
+com\megacitycab\servlets\UpdateCustomerServlet.class
 com\megacitycab\servlets\RegisterCarServlet.class
 com\mycompany\megacitycabsystemjee\resources\JakartaEE10Resource.class
-com\megacitycab\servlets\RegisterServlet.class
+com\megacitycab\servlets\DeleteCustomersServlet.class
+com\megacitycab\servlets\RegisterCustomersServlet.class
+com\megacitycab\servlets\BookingsRegisterServlet.class
+com\mycompany\megacitycabsystemjee\JakartaRestConfiguration.class
+com\megacitycab\servlets\RegisterDriverServlet.class
+com\megacitycab\servlets\DeleteDriverServlet.class
+

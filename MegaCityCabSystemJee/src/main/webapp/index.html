@@ -1,13 +1,637 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Welcome to Yadhu</h1>
-
-        <a href="login.jsp">Login</a>  <br>
-      <a href="register.jsp">Sign Up</a>  
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MegacityJee - Your Urban Transport Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4776E6;
+            --secondary: #8E54E9;
+            --accent: #FF54B0;
+            --light: #ffffff;
+            --dark: #1A1A2E;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Background animated shapes */
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -100px;
+            animation-duration: 35s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: 10%;
+            animation-duration: 25s;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 10%;
+            animation-duration: 30s;
+            animation-delay: 4s;
+        }
+        
+        .shape:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            right: 20%;
+            animation-duration: 20s;
+            animation-delay: 6s;
+        }
+        
+        .shape:nth-child(5) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 30%;
+            animation-duration: 22s;
+            animation-delay: 8s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container {
+            margin-bottom: 2rem;
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--light);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform-style: preserve-3d;
+            animation: logoFloat 5s ease-in-out infinite;
+        }
+        
+        .logo span {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0) rotateX(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateX(5deg);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        @media (min-width: 992px) {
+            .content-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: stretch;
+                gap: 2rem;
+            }
+        }
+        
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 0.8s forwards;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 1s forwards;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 1.2s forwards;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .feature i {
+            color: var(--accent);
+        }
+        
+        .auth-container {
+            flex: 1;
+            max-width: 450px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+            transition: var(--transition);
+        }
+        
+        .auth-container:hover {
+            transform: translateZ(20px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .auth-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .auth-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        .auth-container:hover .auth-title::after {
+            width: 100px;
+        }
+        
+        .auth-description {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .auth-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            transform-style: preserve-3d;
+        }
+        
+        .auth-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .auth-btn:hover::before {
+            left: 100%;
+        }
+        
+        .login-btn {
+            background: var(--light);
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-5px) translateZ(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .signup-btn {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--light);
+        }
+        
+        .signup-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px) translateZ(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--light);
+        }
+        
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .or-divider span {
+            padding: 0 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            animation: fadeIn 1s ease-out 2s forwards;
+            opacity: 0;
+        }
+        
+        .footer a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer a:hover {
+            color: var(--accent);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .auth-container {
+                margin-top: 2rem;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .features {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .auth-container {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* 3D Card Tilt Effect */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+        
+        .tilt-card-inner {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background animated shapes -->
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="container">
+        <div class="logo-container">
+            <h1 class="logo">Megacity<span>Jee</span></h1>
+        </div>
+        
+        <p class="tagline">Your premium urban transport solution</p>
+        
+        <div class="content-wrapper">
+            <div class="hero-content">
+                <h2 class="hero-title">Travel Smarter, <br>Not Harder</h2>
+                <p class="hero-description">
+                    Experience of the future of urban transportation with MegacityJee. 
+                    We connect you with reliable rides at affordable prices, making 
+                    your city commute seamless and enjoyable and enjoy our journey
+                </p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <span>Fast Pickup</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Safe Rides</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tag"></i>
+                        <span>Affordable</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Live Tracking</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-container tilt-card" id="auth-card">
+                <div class="tilt-card-inner">
+                    <h3 class="auth-title">Get Started</h3>
+                    <p class="auth-description">Join thousands of satisfied users who trust MegacityJee for their daily commute</p>
+                    
+                    <div class="auth-buttons">
+                        <a href="login.jsp" class="auth-btn login-btn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Login in Your Account</span>
+                        </a>
+                        <a href="register.jsp" class="auth-btn signup-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Create Your New Account</span>
+                        </a>
+                    </div>
+                    
+                    <div class="or-divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <a href="#" class="social-btn">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-btn">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-btn">
+                            <i class="fab fa-apple"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 MegacityJee. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // 3D Tilt Effect for Auth Card
+        const card = document.getElementById('auth-card');
+        const cardInner = card.querySelector('.tilt-card-inner');
+        
+        card.addEventListener('mousemove', e => {
+            const cardRect = card.getBoundingClientRect();
+            const cardWidth = cardRect.width;
+            const cardHeight = cardRect.height;
+            
+            // Calculate mouse position relative to card center
+            const centerX = cardRect.left + cardWidth / 2;
+            const centerY = cardRect.top + cardHeight / 2;
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+            
+            // Calculate rotation values (limited to +/- 10 degrees)
+            const rotateY = mouseX / (cardWidth / 2) * 5;
+            const rotateX = -mouseY / (cardHeight / 2) * 5;
+            
+            // Apply the rotation
+            cardInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        // Reset rotation when mouse leaves
+        card.addEventListener('mouseleave', () => {
+            cardInner.style.transition = 'transform 0.5s ease';
+            cardInner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            
+            // Reset transition after animation completes
+            setTimeout(() => {
+                cardInner.style.transition = 'transform 0.3s ease';
+            }, 500);
+        });
+        
+        // Add hover effect to buttons
+        const buttons = document.querySelectorAll('.auth-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-5px) translateZ(20px)';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+    </script>
+</body>
 </html>
