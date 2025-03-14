@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Register - MegaCityCab</title>
+    <title>Car Registration</title>
     <style>
         /* Customized CSS for the JSP Page */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #f0f0f0, #e0e0e0); /* Light gray gradient */
+            background: #f0f0f0; /* Light gray mixed with white */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,9 +56,7 @@
             gap: 15px;
         }
 
-        form input[type="text"],
-        form input[type="email"],
-        form input[type="password"] {
+        form input[type="text"] {
             padding: 10px;
             border: none;
             border-radius: 10px;
@@ -69,9 +67,7 @@
             transition: all 0.3s ease;
         }
 
-        form input[type="text"]:focus,
-        form input[type="email"]:focus,
-        form input[type="password"]:focus {
+        form input[type="text"]:focus {
             background: rgba(255, 255, 255, 1); /* Fully white on focus */
             transform: translate3d(0, 0, 10px);
         }
@@ -146,13 +142,6 @@
         .parent:hover .logo .circle3 {
             transform: translate3d(0, 0, 120px);
         }
-
-        /* Message styling */
-        .message {
-            color: red;
-            text-align: center;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
@@ -162,30 +151,14 @@
             <div class="glass">
                 <div class="content">
                     <div class="title">Car Registration</div>
-                    
-                    <!-- Display messages from the servlet (if any) -->
-
                     <form action="/MegaCityCabSystemJee/RegisterCarServlet" method="post">
-                        <!-- Username -->
-                        <input type="text" name="UserNameJ" placeholder="Username" required>
-                        
-                        <!-- Password -->
-                        <input type="password" name="PasswordJ" placeholder="Password" required>
-                        
-                        <!-- First Name -->
-                        <input type="text" name="FirstNameJ" placeholder="First Name">
-                        
-                        <!-- Last Name -->
-                        <input type="text" name="LastNameJ" placeholder="Last Name">
-                        
-                        <!-- Email -->
-                        <input type="email" name="GmailJ" placeholder="Email">
-                        
-                        <!-- Phone -->
-                        <input type="text" name="PhoneJ" placeholder="Phone">
-                        
-                        <!-- Submit Button -->
-                        <input type="submit" value="Register">
+                        Car ID: <input type="text" name="CarIDJ" required><br>
+                        Registration Number: <input type="text" name="RegistrationNumberJ"><br>
+                        Model: <input type="text" name="modelJ"><br>
+                        Type: <input type="text" name="TypeJ"><br>
+                        Capacity: <input type="text" name="CapasityJ"><br>
+                        Availability: <input type="text" name="AvailabilityJ"><br>
+                        <input type="submit" value="Register Car">
                     </form>
                 </div>
             </div>

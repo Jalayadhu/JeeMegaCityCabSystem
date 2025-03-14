@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Register - MegaCityCab</title>
+    <meta charset="UTF-8">
+    <title>Update Customer Details</title>
     <style>
         /* Customized CSS for the JSP Page */
         body {
@@ -58,7 +58,7 @@
 
         form input[type="text"],
         form input[type="email"],
-        form input[type="password"] {
+        form input[type="submit"] {
             padding: 10px;
             border: none;
             border-radius: 10px;
@@ -70,8 +70,7 @@
         }
 
         form input[type="text"]:focus,
-        form input[type="email"]:focus,
-        form input[type="password"]:focus {
+        form input[type="email"]:focus {
             background: rgba(255, 255, 255, 1); /* Fully white on focus */
             transform: translate3d(0, 0, 10px);
         }
@@ -80,7 +79,7 @@
             padding: 10px;
             border: none;
             border-radius: 10px;
-            background: #00894d; /* Green color for the button */
+            background: #007bff; /* Blue color for the button */
             color: white;
             font-size: 16px;
             cursor: pointer;
@@ -88,7 +87,7 @@
         }
 
         form input[type="submit"]:hover {
-            background: #006f3d; /* Darker green on hover */
+            background: #0056b3; /* Darker blue on hover */
             transform: translate3d(0, 0, 10px);
         }
 
@@ -104,7 +103,7 @@
             position: absolute;
             aspect-ratio: 1;
             border-radius: 50%;
-            background: rgba(0, 249, 203, 0.2); /* Light green circle */
+            background: rgba(0, 123, 255, 0.2); /* Light blue circle */
             backdrop-filter: blur(5px);
             transition: all 0.5s ease-in-out;
         }
@@ -146,46 +145,35 @@
         .parent:hover .logo .circle3 {
             transform: translate3d(0, 0, 120px);
         }
-
-        /* Message styling */
-        .message {
-            color: red;
-            text-align: center;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
-    <!-- Car Registration Form -->
     <div class="parent">
         <div class="card">
             <div class="glass">
                 <div class="content">
-                    <div class="title">Car Registration</div>
-                    
-                    <!-- Display messages from the servlet (if any) -->
-
-                    <form action="/MegaCityCabSystemJee/RegisterCarServlet" method="post">
-                        <!-- Username -->
-                        <input type="text" name="UserNameJ" placeholder="Username" required>
+                    <div class="title">Update Customer</div>
+                    <form action="/MegaCityCabSystemJee/UpdateCustomerServlet" method="post">
+                        <!-- Registration Number (Primary Key) -->
+                        <input type="text" name="registration_number" placeholder="Registration Number (Required)" required>
                         
-                        <!-- Password -->
-                        <input type="password" name="PasswordJ" placeholder="Password" required>
+                        <!-- Name -->
+                        <input type="text" name="NAME" placeholder="Name">
                         
-                        <!-- First Name -->
-                        <input type="text" name="FirstNameJ" placeholder="First Name">
+                        <!-- Address -->
+                        <input type="text" name="address" placeholder="Address">
                         
-                        <!-- Last Name -->
-                        <input type="text" name="LastNameJ" placeholder="Last Name">
+                        <!-- NIC -->
+                        <input type="text" name="NIC" placeholder="NIC">
+                        
+                        <!-- Telephone -->
+                        <input type="text" name="telephone" placeholder="Telephone">
                         
                         <!-- Email -->
-                        <input type="email" name="GmailJ" placeholder="Email">
-                        
-                        <!-- Phone -->
-                        <input type="text" name="PhoneJ" placeholder="Phone">
+                        <input type="email" name="email" placeholder="Email">
                         
                         <!-- Submit Button -->
-                        <input type="submit" value="Register">
+                        <input type="submit" value="Update Customer">
                     </form>
                 </div>
             </div>

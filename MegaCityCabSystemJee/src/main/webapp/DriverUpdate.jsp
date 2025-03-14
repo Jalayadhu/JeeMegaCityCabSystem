@@ -1,13 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Register - MegaCityCab</title>
+    <meta charset="UTF-8">
+    <title>Update Driver Details</title>
     <style>
         /* Customized CSS for the JSP Page */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #f0f0f0, #e0e0e0); /* Light gray gradient */
+            background: #f0f0f0; /* Light gray mixed with white */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,8 +58,8 @@
         }
 
         form input[type="text"],
-        form input[type="email"],
-        form input[type="password"] {
+        form input[type="date"],
+        form input[type="email"] {
             padding: 10px;
             border: none;
             border-radius: 10px;
@@ -70,8 +71,8 @@
         }
 
         form input[type="text"]:focus,
-        form input[type="email"]:focus,
-        form input[type="password"]:focus {
+        form input[type="date"]:focus,
+        form input[type="email"]:focus {
             background: rgba(255, 255, 255, 1); /* Fully white on focus */
             transform: translate3d(0, 0, 10px);
         }
@@ -146,46 +147,26 @@
         .parent:hover .logo .circle3 {
             transform: translate3d(0, 0, 120px);
         }
-
-        /* Message styling */
-        .message {
-            color: red;
-            text-align: center;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
-    <!-- Car Registration Form -->
+    <!-- Update Driver Details Form -->
     <div class="parent">
         <div class="card">
             <div class="glass">
                 <div class="content">
-                    <div class="title">Car Registration</div>
-                    
-                    <!-- Display messages from the servlet (if any) -->
-
-                    <form action="/MegaCityCabSystemJee/RegisterCarServlet" method="post">
-                        <!-- Username -->
-                        <input type="text" name="UserNameJ" placeholder="Username" required>
-                        
-                        <!-- Password -->
-                        <input type="password" name="PasswordJ" placeholder="Password" required>
-                        
-                        <!-- First Name -->
+                    <div class="title">Update Driver</div>
+                    <form action="/MegaCityCabSystemJee/UpdateDriverServlet" method="post">
+                        <input type="text" name="DriverIDJ" placeholder="Driver ID (Required)" required>
                         <input type="text" name="FirstNameJ" placeholder="First Name">
-                        
-                        <!-- Last Name -->
                         <input type="text" name="LastNameJ" placeholder="Last Name">
-                        
-                        <!-- Email -->
-                        <input type="email" name="GmailJ" placeholder="Email">
-                        
-                        <!-- Phone -->
-                        <input type="text" name="PhoneJ" placeholder="Phone">
-                        
-                        <!-- Submit Button -->
-                        <input type="submit" value="Register">
+                        <input type="date" name="DobJ" placeholder="Date of Birth">
+                        <input type="text" name="NICNoJ" placeholder="NIC Number">
+                        <input type="text" name="LicenseNumberJ" placeholder="License Number">
+                        <input type="text" name="AddressJ" placeholder="Address">
+                        <input type="text" name="TelephoneJ" placeholder="Telephone">
+                        <input type="email" name="EmailJ" placeholder="Email">
+                        <input type="submit" value="Update Driver">
                     </form>
                 </div>
             </div>

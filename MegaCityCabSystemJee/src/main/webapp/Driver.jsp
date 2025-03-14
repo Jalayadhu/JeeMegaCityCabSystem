@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Register - MegaCityCab</title>
+    <meta charset="UTF-8">
+    <title>Driver Registration</title>
     <style>
         /* Customized CSS for the JSP Page */
         body {
@@ -57,8 +57,9 @@
         }
 
         form input[type="text"],
+        form input[type="date"],
         form input[type="email"],
-        form input[type="password"] {
+        form input[type="submit"] {
             padding: 10px;
             border: none;
             border-radius: 10px;
@@ -70,8 +71,8 @@
         }
 
         form input[type="text"]:focus,
-        form input[type="email"]:focus,
-        form input[type="password"]:focus {
+        form input[type="date"]:focus,
+        form input[type="email"]:focus {
             background: rgba(255, 255, 255, 1); /* Fully white on focus */
             transform: translate3d(0, 0, 10px);
         }
@@ -146,46 +147,41 @@
         .parent:hover .logo .circle3 {
             transform: translate3d(0, 0, 120px);
         }
-
-        /* Message styling */
-        .message {
-            color: red;
-            text-align: center;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
-    <!-- Car Registration Form -->
     <div class="parent">
         <div class="card">
             <div class="glass">
                 <div class="content">
-                    <div class="title">Car Registration</div>
-                    
-                    <!-- Display messages from the servlet (if any) -->
-
-                    <form action="/MegaCityCabSystemJee/RegisterCarServlet" method="post">
-                        <!-- Username -->
-                        <input type="text" name="UserNameJ" placeholder="Username" required>
-                        
-                        <!-- Password -->
-                        <input type="password" name="PasswordJ" placeholder="Password" required>
-                        
+                    <div class="title">Driver Registration</div>
+                    <form action="/MegaCityCabSystemJee/RegisterDriverServlet" method="post">
                         <!-- First Name -->
-                        <input type="text" name="FirstNameJ" placeholder="First Name">
+                        <input type="text" name="FirstNameJ" placeholder="First Name" required>
                         
                         <!-- Last Name -->
                         <input type="text" name="LastNameJ" placeholder="Last Name">
                         
-                        <!-- Email -->
-                        <input type="email" name="GmailJ" placeholder="Email">
+                        <!-- Date of Birth -->
+                        <input type="date" name="DobJ" placeholder="Date of Birth">
                         
-                        <!-- Phone -->
-                        <input type="text" name="PhoneJ" placeholder="Phone">
+                        <!-- NIC Number -->
+                        <input type="text" name="NICNoJ" placeholder="NIC Number">
+                        
+                        <!-- License Number -->
+                        <input type="text" name="LicenseNumberJ" placeholder="License Number">
+                        
+                        <!-- Address -->
+                        <input type="text" name="AddressJ" placeholder="Address">
+                        
+                        <!-- Telephone -->
+                        <input type="text" name="TelephoneJ" placeholder="Telephone">
+                        
+                        <!-- Email -->
+                        <input type="email" name="EmailJ" placeholder="Email">
                         
                         <!-- Submit Button -->
-                        <input type="submit" value="Register">
+                        <input type="submit" value="Register Driver">
                     </form>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Delete Driver</title>
     <style>
         /* Custom CSS by codelofi.coffee */
         body {
@@ -12,11 +12,20 @@
             margin: 0;
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
+        /* Container for Form */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Form Styling */
         .parent {
             width: 350px;
-            height: 400px;
+            height: 300px;
             perspective: 1000px;
         }
 
@@ -47,7 +56,7 @@
         }
 
         .content {
-            padding: 60px 30px 0px 30px;
+            padding: 40px 30px 0px 30px;
             transform: translate3d(0, 0, 26px);
         }
 
@@ -60,14 +69,7 @@
             margin-bottom: 20px;
         }
 
-        .content label {
-            display: block;
-            color: #00894d;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .content input {
+        .content input[type="text"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -75,22 +77,30 @@
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.8);
             font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
-        .content button {
+        .content input[type="text"]:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translate3d(0, 0, 10px);
+        }
+
+        .content input[type="submit"] {
             width: 100%;
             padding: 10px;
-            background: #00894d;
+            background: #00894d; /* Green color for the button */
             color: white;
             border: none;
             border-radius: 10px;
             font-size: 16px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
-        .content button:hover {
-            background: #006f3d;
+        .content input[type="submit"]:hover {
+            background: #006f3d; /* Darker green on hover */
+            transform: translate3d(0, 0, 10px);
         }
 
         .parent:hover .card {
@@ -99,21 +109,29 @@
                 rgba(5, 71, 17, 0.3) 30px 50px 25px -40px,
                 rgba(5, 71, 17, 0.1) 0px 25px 30px 0px;
         }
+
+        .msg {
+            color: #dc3545; /* Red color for error messages */
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <div class="parent">
-        <div class="card">
-            <div class="glass"></div>
-            <div class="content">
-                <span class="title">Login</span>
-                <form action="/MegaCityCabSystemJee/LoginServlet" method="post">
-                    <label for="usernameJ">Username:</label>
-                    <input type="text" id="usernameJ" name="usernameJ" required>
-                    <label for="passwordJ">Password:</label>
-                    <input type="password" id="passwordJ" name="passwordJ" required>
-                    <button type="submit">Login</button>
-                </form>
+    <div class="container">
+        <!-- Delete Driver Form -->
+        <div class="parent">
+            <div class="card">
+                <div class="glass"></div>
+                <div class="content">
+                    <span class="title">Delete Driver</span>
+                    <form action="DeleteDriverServlet" method="post">
+                        <label for="NICNoJ"></label>
+                        <input type="text" name="NICNoJ" placeholder="NIC Number" required>
+                        <input type="submit" value="Delete Driver">
+                    </form>
+                </div>
             </div>
         </div>
     </div>

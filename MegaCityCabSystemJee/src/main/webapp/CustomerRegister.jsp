@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Register - MegaCityCab</title>
+    <title>Customer Registration</title>
     <style>
         /* Customized CSS for the JSP Page */
         body {
@@ -156,36 +156,37 @@
     </style>
 </head>
 <body>
-    <!-- Car Registration Form -->
+    <!-- Customer Registration Form -->
     <div class="parent">
         <div class="card">
             <div class="glass">
                 <div class="content">
-                    <div class="title">Car Registration</div>
+                    <div class="title">Customer Registration</div>
                     
                     <!-- Display messages from the servlet (if any) -->
 
-                    <form action="/MegaCityCabSystemJee/RegisterCarServlet" method="post">
-                        <!-- Username -->
-                        <input type="text" name="UserNameJ" placeholder="Username" required>
+
+                    <form action="RegisterCustomersServlet" method="post">
+                        <!-- Registration Number -->
+                        <input type="text" name="registration_number" placeholder="Registration Number" required>
                         
-                        <!-- Password -->
-                        <input type="password" name="PasswordJ" placeholder="Password" required>
+                        <!-- Name -->
+                        <input type="text" name="NAME" placeholder="Name" required>
                         
-                        <!-- First Name -->
-                        <input type="text" name="FirstNameJ" placeholder="First Name">
+                        <!-- Address -->
+                        <input type="text" name="address" placeholder="Address" required>
                         
-                        <!-- Last Name -->
-                        <input type="text" name="LastNameJ" placeholder="Last Name">
+                        <!-- NIC -->
+                        <input type="text" name="NIC" placeholder="NIC" required>
+                        
+                        <!-- Telephone -->
+                        <input type="text" name="telephone" placeholder="Telephone">
                         
                         <!-- Email -->
-                        <input type="email" name="GmailJ" placeholder="Email">
-                        
-                        <!-- Phone -->
-                        <input type="text" name="PhoneJ" placeholder="Phone">
+                        <input type="email" name="email" placeholder="Email">
                         
                         <!-- Submit Button -->
-                        <input type="submit" value="Register">
+                        <input type="submit" value="Register Customer">
                     </form>
                 </div>
             </div>

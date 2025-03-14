@@ -1,9 +1,13 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registration Successful</title>
     <style>
-        /* Custom CSS by codelofi.coffee */
+        /* Custom CSS with animations and glassmorphism */
         body {
             display: flex;
             justify-content: center;
@@ -16,7 +20,7 @@
 
         .parent {
             width: 350px;
-            height: 400px;
+            height: 250px;
             perspective: 1000px;
         }
 
@@ -47,7 +51,7 @@
         }
 
         .content {
-            padding: 60px 30px 0px 30px;
+            padding: 40px 30px 0px 30px;
             transform: translate3d(0, 0, 26px);
         }
 
@@ -60,44 +64,28 @@
             margin-bottom: 20px;
         }
 
-        .content label {
-            display: block;
-            color: #00894d;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .content input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #00894d;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
-        }
-
-        .content button {
-            width: 100%;
-            padding: 10px;
-            background: #00894d;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .content button:hover {
-            background: #006f3d;
-        }
-
         .parent:hover .card {
             transform: rotate3d(1, 1, 0, 30deg);
             box-shadow:
                 rgba(5, 71, 17, 0.3) 30px 50px 25px -40px,
                 rgba(5, 71, 17, 0.1) 0px 25px 30px 0px;
+        }
+
+        .success-message {
+            color: #00894d;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -106,14 +94,10 @@
         <div class="card">
             <div class="glass"></div>
             <div class="content">
-                <span class="title">Login</span>
-                <form action="/MegaCityCabSystemJee/LoginServlet" method="post">
-                    <label for="usernameJ">Username:</label>
-                    <input type="text" id="usernameJ" name="usernameJ" required>
-                    <label for="passwordJ">Password:</label>
-                    <input type="password" id="passwordJ" name="passwordJ" required>
-                    <button type="submit">Login</button>
-                </form>
+                <span class="title">Registration is not Successful. Please try again</span>
+                <div class="success-message">
+                    Your registration has been completed successfully!
+                </div>
             </div>
         </div>
     </div>
